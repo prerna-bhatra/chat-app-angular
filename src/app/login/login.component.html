@@ -1,0 +1,35 @@
+<div id="SignupFormPage" >
+    <div class="row SignUpForm" >
+        <div class="col-md-6" id="FormData">   
+            <h3>Login</h3>
+            <form [formGroup]="form" >
+                <div *ngIf="form.errors" class="alert alert-danger"></div>
+                <div class="form-group">
+                    <input 
+                    formControlName="username"
+                        id="email" 
+                        type="email" 
+                        placeholder="Email">
+                        <!-- <div *ngIf="email.touched && email.invalid" class="alert alert-danger">
+                            <div *ngIf="email.errors.required">Email is required</div>
+                            <div *ngIf="email.errors.email">Email should be valid</div>
+                        </div> -->
+                </div>
+                <div class="form-group">
+                    <input 
+                        formControlName="password"
+                        id="password" 
+                        type="password" autocomplete="off"
+                        placeholder="Password">
+                        <!-- <div *ngIf="password.touched && password.invalid" class="alert alert-danger">
+                            <div *ngIf="password.errors.required">Password is required</div>
+                            <div *ngIf="password.errors.pattern">Password should be start with a number ,and length should be 8 to 10 </div>
+                        </div> -->
+                </div>
+                <button class="btn btn-success" type="submit" (click)="signinApi()">Sign In</button>
+            </form>
+            <br/>
+            <h6>Not  Having Account?<a routerLink="/signup" routerLinkActive="active">Login</a> </h6>
+        </div>
+    </div>
+    </div>

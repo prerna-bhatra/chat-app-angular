@@ -1,0 +1,47 @@
+<div id="SignupFormPage" >
+    <div class="row SignUpForm" >
+        <div class="col-md-6" id="FormData">   
+            <h3>Create Account</h3>
+            <form [formGroup]="form" >
+                <div *ngIf="form.errors" class="alert alert-danger"></div>
+                <div class="form-group">
+                    
+                    <input 
+                        formControlName="fullname"
+                        id="username" 
+                        type="text" 
+                        placeholder="Name">
+                        <!-- <div *ngIf="fullname.touched && fullname.invalid" class="alert alert-danger">
+                            <div *ngIf="fullname.errors.required">Name is required</div>
+                            <div *ngIf="fullname.errors.minlength">Name should be minimum 3 chars</div>
+                        </div> -->
+                </div>
+                <div class="form-group">
+                    <input 
+                    formControlName="username"
+                        id="email" 
+                        type="email" 
+                        placeholder="Email">
+                        <!-- <div *ngIf="email.touched && email.invalid" class="alert alert-danger">
+                            <div *ngIf="email.errors.required">Email is required</div>
+                            <div *ngIf="email.errors.email">Email should be valid</div>
+                        </div> -->
+                </div>
+                <div class="form-group">
+                    <input 
+                        formControlName="password"
+                        id="password" 
+                        type="password" autocomplete="off"
+                        placeholder="Password">
+                        <!-- <div *ngIf="password.touched && password.invalid" class="alert alert-danger">
+                            <div *ngIf="password.errors.required">Password is required</div>
+                            <div *ngIf="password.errors.pattern">Password should be start with a number ,and length should be 8 to 10 </div>
+                        </div> -->
+                </div>
+                <button class="btn btn-success" type="submit" (click)="signupApi()">Sign Up</button>
+            </form>
+            <br/>
+            <h6>Already Having Account?<a routerLink="/login" routerLinkActive="active">Login</a> </h6>
+        </div>
+    </div>
+    </div>

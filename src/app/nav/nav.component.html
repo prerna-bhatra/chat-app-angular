@@ -1,0 +1,13 @@
+<div class="card">
+  <p-menubar [model]="items">
+    <div *ngIf="isLoggedIn">
+      <button
+        type="button"
+        pButton
+        label="Logout"
+        icon="pi pi-power-off"
+        style="margin-left: 0.25em"
+      ></button>
+    </div>
+  </p-menubar>
+</div>

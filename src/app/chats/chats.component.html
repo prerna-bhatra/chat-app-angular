@@ -1,0 +1,14 @@
+<div>
+  <div class="chat-header">
+    <h4>Room Name : {{ roomDetails.name }}</h4>
+  </div>
+  <div class="chat-body" *ngFor="let message of messages">
+    {{ message.msgOwner[0].fullname }}
+    {{ message.text }}
+  </div>
+
+  <div class="send-chat">
+    <input type="text" [(ngModel)]="message" />
+    <button (click)="sendMessage()">send</button>
+  </div>
+</div>

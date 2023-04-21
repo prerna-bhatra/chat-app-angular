@@ -1,0 +1,14 @@
+<div>
+  <div></div>
+  <div *ngIf="isLoggedIn">
+    <div>
+      <input type="text" [(ngModel)]="roomName" />
+      <button (click)="addRoom()">Create Room</button>
+    </div>
+
+    <!-- available rooms -->
+    <div *ngFor="let room of rooms">
+      <button (click)="joinRoom(room._id , room.name)">{{ room.name }}</button>
+    </div>
+  </div>
+</div>
