@@ -55,19 +55,25 @@ export class HomeComponent implements OnInit {
   }
 
   addRoom() {
-    if (this.roomName.trim().length > 3) {
+    if (this.roomName.trim().length > 5) {
       this.config_service.addRoom({ name: this.roomName }).subscribe((data) => {
         console.log({ data });
         if (data.isError) {
           alert(data.err);
-        } else if (!data.isError) alert('successfully created room ');
+        } else if (!data.isError) {
+          this.rooms.unshift({
+            _id: data.result._id,
+            name: data.result.name,
+          });
+          alert('successfully created room ');
+        }
       });
     } else {
-      alert('please enter room name wih min 3 letters');
+      alert('please enter room name wih min 5 letters');
     }
   }
 
-  joinRoom(roomId: string , roomName:string) {
+  joinRoom(roomId: string, roomName: string) {
     this.router.navigate([`/chat-room`, { roomId, roomName }]);
   }
 }

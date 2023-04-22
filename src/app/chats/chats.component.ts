@@ -22,6 +22,7 @@ export class ChatsComponent implements OnInit {
   };
 
   userDetails: any = {
+    sub:'',
     _id: '',
     fullname: '',
     username: '',
@@ -51,6 +52,7 @@ export class ChatsComponent implements OnInit {
       this.userDetails = this.config_service.getAuthDetails(
         this.parsedAuthDetails.access_token
       );
+      
 
       if (parsedData.isLoggedIn) {
         this.subscription = this.router.params.subscribe((params: any) => {
@@ -72,7 +74,6 @@ export class ChatsComponent implements OnInit {
         });
 
         this.socket.on('message', (message: IEMessage) => {
-          console.log('REAL TIME CHECK ', message);
           this.messages.push(message);
         });
       }
@@ -86,5 +87,8 @@ export class ChatsComponent implements OnInit {
       ownerId: this.userDetails.sub,
     });
     this.message = '';
+
+    const element = document.getElementsByClassName("chat-area")[0];
+    element.scrollTop = element.scrollHeight+1000
   }
 }

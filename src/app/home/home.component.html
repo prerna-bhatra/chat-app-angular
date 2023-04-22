@@ -1,14 +1,14 @@
-<div>
+<div class="main-body">
   <div></div>
-  <div *ngIf="isLoggedIn">
+  <div *ngIf="isLoggedIn" class="chat-rooms">
     <div>
-      <input type="text" [(ngModel)]="roomName" />
-      <button (click)="addRoom()">Create Room</button>
+      <input type="text" [(ngModel)]="roomName" placeholder="Room Name" />
+      <button class="create-room" (click)="addRoom()">Create Room</button>
     </div>
 
     <!-- available rooms -->
     <div *ngFor="let room of rooms">
-      <button (click)="joinRoom(room._id , room.name)">{{ room.name }}</button>
+      <button class="rooms" (click)="joinRoom(room._id , room.name)">{{ room.name }}</button>
     </div>
   </div>
 </div>

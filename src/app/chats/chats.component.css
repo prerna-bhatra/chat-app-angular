@@ -1,0 +1,20 @@
+.main-body {
+    margin: 0 auto;
+    padding: 10px 10px 10px 10px;
+    border: 1px solid black;
+    width: 50%;
+  }
+
+  .main-body .chat-area{
+    height: 200px;
+    /* scroll-behavior: auto; */
+    overflow-y: auto;
+  }
+
+  .main-body .chat-body-left{
+    text-align: left;
+  }
+
+  .main-body .chat-body-right{
+    text-align: right;
+  }

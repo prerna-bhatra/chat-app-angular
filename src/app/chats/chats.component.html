@@ -1,10 +1,19 @@
-<div>
+<div class="main-body">
   <div class="chat-header">
     <h4>Room Name : {{ roomDetails.name }}</h4>
   </div>
-  <div class="chat-body" *ngFor="let message of messages">
-    {{ message.msgOwner[0].fullname }}
-    {{ message.text }}
+  <div class="chat-area">
+    <div
+      [ngClass]="
+        userDetails.sub == message.msgOwner[0]._id
+          ? 'chat-body-right'
+          : 'chat-body-left'
+      "
+      *ngFor="let message of messages"
+    >
+      <p class="msg-owner">{{ message.msgOwner[0].fullname }}</p>
+      <p class="text-msg">{{ message.text }}</p>
+    </div>
   </div>
 
   <div class="send-chat">
