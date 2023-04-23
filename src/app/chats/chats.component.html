@@ -11,13 +11,16 @@
       "
       *ngFor="let message of messages"
     >
+    <div>
       <p class="msg-owner">{{ message.msgOwner[0].fullname }}</p>
-      <p class="text-msg">{{ message.text }}</p>
+      <div class="text-msg-area">
+        <p class="text-msg">{{ message.text }}</p>
+      </div>
     </div>
   </div>
 
   <div class="send-chat">
-    <input type="text" [(ngModel)]="message" />
+    <textarea type="text" [(ngModel)]="message" cols="60"></textarea>
     <button (click)="sendMessage()">send</button>
   </div>
 </div>

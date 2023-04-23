@@ -1,5 +1,32 @@
-<div class="main-body">
-  <div></div>
+<div [ngClass]="isLoggedIn ? 'main-body' : 'main-body-without-login'">
+  <div *ngIf="!isLoggedIn" class="without-loggedin">
+    <div class="m-b-area">
+      <div class="float-left">
+        <h1>Message privately</h1>
+        <p>Simple, reliable, private messaging</p>
+      </div>
+
+      <div class="float-right">
+        <img
+          src="https://media.istockphoto.com/id/1270066890/photo/multiethnic-parents-giving-children-piggyback-ride.jpg?s=612x612&w=0&k=20&c=8af-giLRvOhM2VL9VBBcYDfqRxJtU_uvdoHhw86UIew="
+        />
+      </div>
+    </div>
+
+    <div class="m-b-area">
+      <div class="float-left">
+        <h1>Speak freely</h1>
+        <p>your personal messages and calls are secured.</p>
+      </div>
+
+      <div class="float-right">
+        <img
+          src="https://media.wired.com/photos/5926d4d08d4ebc5ab806ba0b/master/w_2560%2Cc_limit/message-encryption.jpg"
+        />
+      </div>
+    </div>
+
+  </div>
   <div *ngIf="isLoggedIn" class="chat-rooms">
     <div>
       <input type="text" [(ngModel)]="roomName" placeholder="Room Name" />
@@ -8,7 +35,9 @@
 
     <!-- available rooms -->
     <div *ngFor="let room of rooms">
-      <button class="rooms" (click)="joinRoom(room._id , room.name)">{{ room.name }}</button>
+      <button class="rooms" (click)="joinRoom(room._id, room.name)">
+        {{ room.name }}
+      </button>
     </div>
   </div>
 </div>

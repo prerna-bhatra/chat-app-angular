@@ -9,12 +9,41 @@
     height: 200px;
     /* scroll-behavior: auto; */
     overflow-y: auto;
+    overflow-x: hidden;
+    
   }
 
   .main-body .chat-body-left{
     text-align: left;
+    width: auto;
+    white-space:nowrap; 
+    display: block;
+
   }
 
   .main-body .chat-body-right{
     text-align: right;
+    width: auto;
+    white-space:nowrap; 
+    display: block;
+
+  }
+
+  .send-chat button {
+    float: right;
+    background-color: #4caf50;
+    color: white;
+    padding: 14px 20px;
+    margin-left: 40px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+
+  .msg-owner{
+    color: #4caf50;
+    font-weight: bold;
+  }
+  .text-msg-area{
+    
   }
