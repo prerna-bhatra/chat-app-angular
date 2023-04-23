@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { IELogin } from './login';
 import { ConfigService } from '../config.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -9,7 +10,7 @@ import { ConfigService } from '../config.service';
   styleUrls: ['./login.component.css'],
 })
 export class LoginComponent implements OnInit {
-  constructor(private SignInService: ConfigService) {}
+  constructor(private SignInService: ConfigService, private router: Router) {}
 
   form = new FormGroup({
     password: new FormControl('', [
@@ -38,7 +39,8 @@ export class LoginComponent implements OnInit {
           };
           localStorage.setItem('auth_chat', JSON.stringify(authObj));
           alert('successfully loggedin ');
-          //  this.router.navigate(['/chats'])
+          this.SignInService.isUserLoggedIn.next(true);
+          this.router.navigate(['/']);
         }
       },
 

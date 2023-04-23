@@ -68,7 +68,6 @@ export class ChatsComponent implements OnInit {
               alert(data.err);
             } else {
               this.messages = data.result;
-              console.log({ msgs: this.messages });
             }
           });
         });

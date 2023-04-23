@@ -57,7 +57,6 @@ export class HomeComponent implements OnInit {
   addRoom() {
     if (this.roomName.trim().length > 5) {
       this.config_service.addRoom({ name: this.roomName }).subscribe((data) => {
-        console.log({ data });
         if (data.isError) {
           alert(data.err);
         } else if (!data.isError) {

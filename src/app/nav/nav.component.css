@@ -8,8 +8,20 @@
 :host ::ng-deep .p-menuitem {
     background-color: rgb(173, 255, 106);
     margin: 12px;
+    padding: 5px 5px 5px 5px ;
 }
 
 :host ::ng-deep .p-menubar div {
     margin: 5px 5px 5px 5px;
 } 
+
+:host ::ng-deep .p-hidden{
+    visibility: hidden;
+}
+
+
+:host ::ng-deep .logout-class{
+    align-self: flex-end;
+    background-color: black;
+    color: white
+}

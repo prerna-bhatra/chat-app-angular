@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { IESignup } from './signup';
 import { ConfigService } from '../config.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-signup',
@@ -9,7 +10,7 @@ import { ConfigService } from '../config.service';
   styleUrls: ['./signup.component.css'],
 })
 export class SignupComponent implements OnInit {
-  constructor(private SignUpService: ConfigService) {}
+  constructor(private SignUpService: ConfigService , private router:Router) {}
 
   form = new FormGroup({
     fullname: new FormControl('', [
@@ -37,7 +38,7 @@ export class SignupComponent implements OnInit {
         if (data.isError) {
           alert(data.err);
         } else if (!data.isError) alert('successfully signup ');
-        //  this.router.navigate(['/login'])
+         this.router.navigate(['/login'])
       },
       (err) => {
         console.log({ err });

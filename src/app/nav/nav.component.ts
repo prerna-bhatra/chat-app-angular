@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MenuItem } from 'primeng/api';
 import { ConfigService } from '../config.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-nav',
@@ -13,48 +14,57 @@ export class NavComponent implements OnInit {
   items: MenuItem[] = [];
   isLoggedIn: boolean = false;
 
-  constructor(private service: ConfigService) {
+  constructor(private service: ConfigService, private router: Router) {
     this.service.isUserLoggedIn.subscribe((value) => {
       this.isLoggedIn = value;
     });
   }
 
   ngOnInit(): void {
-    console.log({ authchat: this.authData });
-    console.log({ authData: this.authData.length });
+    this.checkLogin();
 
-    if (this.authData.length > 1) {
-      const parsedData = JSON.parse(this.authData);
+    this.service.isUserLoggedIn.subscribe((value) => {
+      this.isLoggedIn = value;
 
-      if (parsedData.isLoggedIn) {
-        this.isLoggedIn = true;
-        this.items = [
-          {
-            label: 'Home',
-            icon: 'pi  pi-home',
-            routerLink: ['/'],
-          },
-        ];
-      }
-    } else {
       this.items = [
         {
           label: 'Home',
           icon: 'pi  pi-home',
           routerLink: ['/'],
         },
-
         {
           label: ' Sign-in',
+          visible: !this.isLoggedIn,
           routerLink: ['/login'],
-          // icon: 'pi  pi-sign-in',
         },
         {
           label: '    Sign-up',
           routerLink: ['/signup'],
-          // icon: 'pi pi-fw pi-sign-up',
+          visible: !this.isLoggedIn,
+        },
+        {
+          label: 'logout',
+          command: (event?: any) => {
+            localStorage.removeItem('auth_chat');
+            this.service.isUserLoggedIn.next(false);
+            this.router.navigate(['/login']);
+          },
+          styleClass: 'logout-class',
+          visible: this.isLoggedIn,
         },
       ];
+    });
+  }
+
+  checkLogin() {
+    if (localStorage.getItem('auth_chat')) {
+      // this.isLoggedIn = true;
+      this.service.isUserLoggedIn.next(true);
+    } else {
+      // this.isLoggedIn = false;
+      this.service.isUserLoggedIn.next(false);
+
+      //  this.router.navigate(['/login']);
     }
   }
 
